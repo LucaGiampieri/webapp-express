@@ -9,5 +9,8 @@ const movieController = require('../controllers/movieController');
 // rotta di index
 router.get('/', movieController.index);
 
+// rotta di show
+router.get('/:id', movieController.show);
+
 // export rotte
 module.exports = router;

@@ -4,12 +4,13 @@ const port = process.env.PORT;
 
 // import del router dei film
 const movieRouter = require('./routers/movieRouter');
-
 // import del middelware di gestione errore interno 500
 const errorsHandler = require("./middlewares/errorsHandler");
-
 // import del middelware di gestione di rotta inesistente
 const notFound = require("./middlewares/notFound");
+
+// attivazione della cartella public per uso file statici
+app.use(express.static('public'));
 
 // rotta home APP
 app.get('/api', (req, res) => {
