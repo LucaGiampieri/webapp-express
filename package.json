@@ -1,0 +1,22 @@
+{
+  "name": "webapp-express",
+  "version": "1.0.0",
+  "description": "Esercizio webapp-express",
+  "repository": {
+    "type": "git",
+    "url": "webapp-express"
+  },
+  "license": "ISC",
+  "author": "Luca Giampieri",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "watch": "node --env-file=.env --watch app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mysql2": "^3.17.4"
+  }
+}
