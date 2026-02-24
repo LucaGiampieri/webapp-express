@@ -11,6 +11,8 @@ const movieRouter = require('./routers/movieRouter');
 const errorsHandler = require("./middlewares/errorsHandler");
 // import del middelware di gestione di rotta inesistente
 const notFound = require("./middlewares/notFound");
+// import middelware di gestione path img
+const imagePath = require("./middlewares/imagePath")
 
 // attivazione middelware per il CORS
 app.use(cors({
@@ -27,6 +29,9 @@ app.get('/api', (req, res) => {
 
 // rotte relative al router dei film
 app.use('/api/movies', movieRouter);
+
+// attivazione middelware di gestione path img
+app.use(imagePath);
 
 // registriamo middelware di gestione err 500
 app.use(errorsHandler);
