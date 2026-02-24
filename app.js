@@ -2,12 +2,20 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT;
 
+// import middelware CORS
+const cors = require("cors");
+
 // import del router dei film
 const movieRouter = require('./routers/movieRouter');
 // import del middelware di gestione errore interno 500
 const errorsHandler = require("./middlewares/errorsHandler");
 // import del middelware di gestione di rotta inesistente
 const notFound = require("./middlewares/notFound");
+
+// attivazione middelware per il CORS
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 // attivazione della cartella public per uso file statici
 app.use(express.static('public'));
