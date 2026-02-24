@@ -22,6 +22,9 @@ app.use(cors({
 // attivazione della cartella public per uso file statici
 app.use(express.static('public'));
 
+// attivazione middelware di gestione path img
+app.use(imagePath);
+
 // rotta home APP
 app.get('/api', (req, res) => {
     res.send("<h1>Rotta di home della nostra App di film</h1>")
@@ -29,9 +32,6 @@ app.get('/api', (req, res) => {
 
 // rotte relative al router dei film
 app.use('/api/movies', movieRouter);
-
-// attivazione middelware di gestione path img
-app.use(imagePath);
 
 // registriamo middelware di gestione err 500
 app.use(errorsHandler);

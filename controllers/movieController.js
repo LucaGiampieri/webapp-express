@@ -11,7 +11,16 @@ function index(req, res) {
     connection.query(sql, (err, results) => {
         if (err)
             return res.status(500).json({ error: 'Database query failed' });
-        res.json(results);
+
+        // creo una copia dei risultati con modifica path imgs
+        const movies = results.map(movie => {
+            return {
+                ...movie,
+                image: req.imagePath + movie.image
+            }
+        })
+
+        res.json(movies);
     });
 }
 
@@ -35,6 +44,12 @@ function show(req, res) {
         // salviamo il risultato in una cost
         const movie = movieResults[0];
 
+        // creo una copia dei risultati con modifica path imgs
+        const newMovie = {
+            ...movie,
+            image: req.imagePath + movie.image
+        };
+
         // chiamata a DB secondaria per recupero reviews dei film
         connection.query(reviewsSql, [id], (err, reviewsResults) => {
             if (err) return res.status(500).json({ error: 'Database query failed' });
@@ -43,10 +58,10 @@ function show(req, res) {
             const reviewsArr = reviewsResults;
 
             // aggiungiamo a oggetto movie la prop per le reviews
-            movie.reviews = reviewsArr;
+            newMovie.reviews = reviewsArr;
 
             // ritorniamo il json del film
-            res.json(movie);
+            res.json(newMovie);
         });
     });
 }
