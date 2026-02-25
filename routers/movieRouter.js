@@ -12,5 +12,8 @@ router.get('/', movieController.index);
 // rotta di show
 router.get('/:id', movieController.show);
 
+// rotta di create recensione
+router.post('/:id/reviews', movieController.storeReview);
+
 // export rotte
 module.exports = router;

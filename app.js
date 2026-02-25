@@ -22,6 +22,9 @@ app.use(cors({
 // attivazione della cartella public per uso file statici
 app.use(express.static('public'));
 
+// registro il body-parser per "applicaztion/json"
+app.use(express.json());
+
 // attivazione middelware di gestione path img
 app.use(imagePath);
 
